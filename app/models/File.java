@@ -4,7 +4,8 @@ import java.util.*;
 import javax.persistence.*;
 import play.db.jpa.*;
 
-public class File {
+@Entity
+public class File extends Model {
 
     @ManyToOne
     public Message message;
