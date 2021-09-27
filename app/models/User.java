@@ -7,6 +7,9 @@ import play.db.jpa.*;
 @Entity
 public class User extends Model {
 
+    @ManyToMany
+    public List<Message> messagesList = new ArrayList<>();
+
     public String email;
     public String password;
     public String fullname;

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="" />
+    <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ProjectePES.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.ipr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf/application.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/application.conf" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +19,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1yOxTKWQE0c2kGFQdYXndFg0ShQ" />
   <component name="ProjectViewState">
