@@ -7,8 +7,8 @@ import play.db.jpa.*;
 @Entity
 public class User extends Model {
 
-    @ManyToMany
-    public List<Message> messagesList = new ArrayList<>();
+    @OneToMany (mappedBy = "user")
+    public List<Message_User> list = new ArrayList<>();
 
     public String email;
     public String password;

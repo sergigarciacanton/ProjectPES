@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/File.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.File" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.File" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
