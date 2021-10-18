@@ -20,7 +20,7 @@ public class Application extends Controller {
         User user = User.find("byEmailAndPassword",mail, password).first();
         if(user == null) {
             user = User.find("byEmail",mail).first();
-            if(user == null) renderText("Error. Mail adresss does not exist.");
+            if(user == null) renderText("Error. Mail address does not exist.");
             else renderText("Error. Wrong password.");
         }
         else renderText("Login successful!");
