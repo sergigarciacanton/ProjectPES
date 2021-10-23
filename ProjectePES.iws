@@ -5,8 +5,13 @@
       <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/Message_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message_User" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message_User" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/classes/models/Message_User.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/models/Message_User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/models/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +36,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

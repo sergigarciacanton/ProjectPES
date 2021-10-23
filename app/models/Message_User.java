@@ -11,15 +11,18 @@ public class Message_User extends Model {
     public Message message;
 
     @ManyToOne
-    public User user;
+    public User sender;
+
+    @ManyToOne public User receiver;
 
     public String inbox;
     public Date date;
     public Boolean forward;
 
-    public Message_User(Message message, User user, String inbox, Date date, Boolean forward) {
+    public Message_User(Message message, User sender, User receiver, String inbox, Date date, Boolean forward) {
         this.message = message;
-        this.user = user;
+        this.sender = sender;
+        this.receiver = receiver;
         this.inbox = inbox;
         this.date = date;
         this.forward = forward;

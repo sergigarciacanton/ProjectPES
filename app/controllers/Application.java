@@ -10,8 +10,6 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        new User("s@gmail.com", "123", "Sergi").save();
-
         render();
     }
 
