@@ -94,4 +94,14 @@ public class Application extends Controller {
         List<Message> messages = query.getResultList();
         renderXml(messages);
     }
+    public static void moveToBox(String asunto,String email, String box) {
+        User user = User.find("byEmail",email).first();
+        Message_User mess = Message_User.find("byUserAndMessage",user, Message.find("byTitle",asunto).first()).first();
+        if(mess != null) renderText("Error. Message address does not exist.");
+        else {
+            mess.inbox = box;
+            mess.save();
+            renderText("Successfully changed!");
+        }
+    }
 }

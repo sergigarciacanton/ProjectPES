@@ -2,16 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bootstrap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/Message_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message_User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -22,6 +21,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="1yOxTKWQE0c2kGFQdYXndFg0ShQ" />
   <component name="ProjectViewState">
