@@ -8,6 +8,8 @@ import java.util.*;
 
 import models.*;
 
+import javax.persistence.Query;
+
 
 public class Application extends Controller {
 
@@ -76,15 +78,20 @@ public class Application extends Controller {
         User user1 = User.find("byFullname", sender.fullname).first();
         User user2 = User.find("byFullname", receiver.fullname).first();
         if (user1 != null && user2 != null) {
-
             new Message_User( message,  sender,  receiver,  inbox,  date,  forward).save();
-
         }
-
-        else{
+        else {
             renderText("This user does not exist");
         }
-
     }
 
+    public static void getInbox(String mail, String inboxCode) {
+        //localhost:9000/Application/getInbox?mail=j@gmail.com&inboxCode=main
+        Query query = JPA.em().createQuery("SELECT m.message FROM Message_User m WHERE m.receiver.email " +
+                        "LIKE :receiverEmail AND m.inbox LIKE :inboxCode")
+                .setParameter("receiverEmail", mail)
+                .setParameter("inboxCode", inboxCode);
+        List<Message> messages = query.getResultList();
+        renderXml(messages);
     }
+}

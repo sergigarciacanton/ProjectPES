@@ -20,4 +20,12 @@ public class Message extends Model {
         this.title = title;
         this.body = body;
     }
+
+    @Override
+    public String toString() {
+        return "\n     {" +
+                "\n          \"title\": \"" + title + "\"," +
+                "\n          \"body\": \"" + body + '\"' +
+                "\n     }\n";
+    }
 }
