@@ -29,8 +29,8 @@ public class Application extends Controller {
         User user = User.find("byMailAndPassword", mail, password).first();
         if (user == null) {
             user = User.find("byMail", mail).first();
-            if (user == null) renderText("Error. Mail address introduced does not exist.");
-            else renderText("Wrong password.");
+            if (user == null) renderTemplate("errors/loginMailError.html");
+            else renderTemplate("errors/loginPasswordError.html");
         }
         else {
             connectedUser = mail;
@@ -43,11 +43,11 @@ public class Application extends Controller {
         //localhost:9000/Application/register?mail=a@gmail.com&password=123&fullName=Albert
         User user = User.find("byMail", mail).first();
         if (user != null) {
-            renderText("Error. Mail address does already exist.");
+            renderTemplate("errors/registerMailError.html");
         }
         else {
             new User(mail, password, fullName).save();
-            renderText("Registered successfully!");
+            renderTemplate("messages/registerSuccess.html");
         }
     }
 
