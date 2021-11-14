@@ -1,4 +1,30 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<h1>Login</h1>
+
+<div>
+
+    #{form @login(), id:'formLogin'}
+    <p class="field">
+        <label>Mail address:</label>
+        <input type="text" name="mail" size="19" value="${flash.username}" />
+    </p>
+    <p class="field">
+        <label>Password:</label>
+        <input type="password" name="password" size="19"/>
+    </p>
+    <p class="buttons">
+        <input type="submit" value="Account login" />
+    </p>
+    #{/form}
+
+    <p>
+        <a href="@{indexRegister()}">Register New User</a>
+    </p>
+
+</div>
+
+<script type="text/javascript" charset="${_response_encoding}">
+    sessvars.$.clearMem()
+</script>

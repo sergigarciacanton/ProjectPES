@@ -13,70 +13,86 @@ import javax.persistence.Query;
 
 public class Application extends Controller {
 
-    public static void index() {renderText("funciona");}
+    public static String connectedUser;
+
+    @Before
+    static void connectedUser() {
+        connectedUser = session.get("user");
+    }
+
+    public static void index() {render();}
+
+    public static void indexRegister() {render();}
 
     public static void login(String mail, String password) {
         //localhost:9000/Application/login?mail=s@gmail.com&password=123
-        User user = User.find("byEmailAndPassword", mail, password).first();
+        User user = User.find("byMailAndPassword", mail, password).first();
         if (user == null) {
-            user = User.find("byEmail", mail).first();
-            if (user == null) renderText("Error. Mail address does not exist.");
-            else renderText("Error. Wrong password.");
-        } else renderText("Login successful!");
-    }
-
-    public static void register(String email, String password, String fullName) {
-        //localhost:9000/Application/register?email=a@gmail.com&password=123&fullName=Albert
-        User user = User.find("byEmail", email).first();
-        if (user != null) renderText("Error. Mail address does already exist.");
+            user = User.find("byMail", mail).first();
+            if (user == null) renderText("Error. Mail address introduced does not exist.");
+            else renderText("Wrong password.");
+        }
         else {
-            new User(email, password, fullName).save();
-            renderText("Successfully registered!");
+            connectedUser = mail;
+            session.put("user", mail);
+            renderTemplate("Application/inbox.html");
         }
     }
 
-    public static void deleteAccount(String name, String passw) {
-        User user = User.find("byFullname", name).first();
+    public static void register(String mail, String password, String fullName) {
+        //localhost:9000/Application/register?mail=a@gmail.com&password=123&fullName=Albert
+        User user = User.find("byMail", mail).first();
+        if (user != null) {
+            renderText("Error. Mail address does already exist.");
+        }
+        else {
+            new User(mail, password, fullName).save();
+            renderText("Registered successfully!");
+        }
+    }
+
+    public static void deleteAccount(String name, String password) {
+        User user = User.find("byFullName", name).first();
         if (user != null) {
 
-            if (passw.equals(user.password)) {
+            if (password.equals(user.password)) {
                 user.delete();
-                renderText(name + " has been deleted deleted");
+                renderText(name + " has been deleted.");
             }
             else {
-                renderText("Wrong password");
+                renderText("Wrong password.");
             }
 
         } else {
-            renderText("This user does not exist");
+            renderText("This user does not exist.");
         }
     }
 
-    public static void updatePassword(String name, String newpswd, String passw) {
-        User user = User.find("byFullname", name).first();
+    public static void updatePassword(String name, String newPassword, String password) {
+        User user = User.find("byFullName", name).first();
         if (user != null) {
-            if (passw.equals(user.password)) {
-                user.password = newpswd;
+            if (password.equals(user.password)) {
+                user.password = newPassword;
                 user.save();
             }
-            renderText("Wrong password");
+            renderText("Wrong password.");
         }
     }
 
-    public static void updateName(String name, String newname, String passw) {
-        User user = User.find("byFullname", name).first();
+    public static void updateName(String name, String newName, String password) {
+        User user = User.find("byFullName", name).first();
         if (user != null) {
-            if (passw.equals(user.password)) {
-                user.fullname = newname;
+            if (password.equals(user.password)) {
+                user.fullName = newName;
                 user.save();
             }
-            renderText("Wrong password");
+            renderText("Wrong password.");
         }
     }
 
     public static void send (Message message, User sender, User receiver, String inbox, Date date, Boolean forward) {
-        User user1 = User.find("byFullname", sender.fullname).first();
-        User user2 = User.find("byFullname", receiver.fullname).first();
+        User user1 = User.find("byFullName", sender.fullName).first();
+        User user2 = User.find("byFullName", receiver.fullName).first();
         if (user1 != null && user2 != null) {
             new Message_User( message,  sender,  receiver,  inbox,  date,  forward).save();
         }
@@ -87,21 +103,11 @@ public class Application extends Controller {
 
     public static void getInbox(String mail, String inboxCode) {
         //localhost:9000/Application/getInbox?mail=j@gmail.com&inboxCode=main
-        Query query = JPA.em().createQuery("SELECT m.message FROM Message_User m WHERE m.receiver.email " +
-                        "LIKE :receiverEmail AND m.inbox LIKE :inboxCode")
-                .setParameter("receiverEmail", mail)
+        Query query = JPA.em().createQuery("SELECT m.message FROM Message_User m WHERE m.receiver.mail " +
+                        "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                .setParameter("receiverMail", mail)
                 .setParameter("inboxCode", inboxCode);
         List<Message> messages = query.getResultList();
         renderXml(messages);
-    }
-    public static void moveToBox(String asunto,String email, String box) {
-        User user = User.find("byEmail",email).first();
-        Message_User mess = Message_User.find("byUserAndMessage",user, Message.find("byTitle",asunto).first()).first();
-        if(mess != null) renderText("Error. Message address does not exist.");
-        else {
-            mess.inbox = box;
-            mess.save();
-            renderText("Successfully changed!");
-        }
     }
 }

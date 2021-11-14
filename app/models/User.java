@@ -13,13 +13,13 @@ public class User extends Model {
     @OneToMany (mappedBy = "receiver")
     public List<Message_User> receiversList = new ArrayList<>();
 
-    public String email;
+    public String mail;
     public String password;
-    public String fullname;
+    public String fullName;
 
-    public User(String email, String password, String fullname) {
-        this.email = email;
+    public User(String mail, String password, String fullName) {
+        this.mail = mail;
         this.password = password;
-        this.fullname = fullname;
+        this.fullName = fullName;
     }
 }
