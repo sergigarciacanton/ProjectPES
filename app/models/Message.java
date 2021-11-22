@@ -3,6 +3,7 @@ package models;
 import java.util.*;
 import javax.persistence.*;
 import play.db.jpa.*;
+import com.google.gson.annotations.Expose;
 
 @Entity
 public class Message extends Model {
@@ -13,7 +14,9 @@ public class Message extends Model {
     @OneToMany (mappedBy = "message")
     public List<File> filesList;
 
+    @Expose
     public String title;
+    @Expose
     public String body;
 
     public Message(String title, String body) {

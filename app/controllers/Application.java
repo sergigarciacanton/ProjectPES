@@ -10,6 +10,8 @@ import models.*;
 
 import javax.persistence.Query;
 
+import com.google.gson.Gson;
+
 
 public class Application extends Controller {
 
@@ -108,6 +110,8 @@ public class Application extends Controller {
                 .setParameter("receiverMail", mail)
                 .setParameter("inboxCode", inboxCode);
         List<Message> messages = query.getResultList();
-        renderXml(messages);
+        Gson g = new Gson();
+        g = g.newBuilder().excludeFieldsWithoutExposeAnnotation().create();
+        renderJSON(  g.toJson(messages));
     }
 }
