@@ -4,6 +4,8 @@ import play.*;
 import play.mvc.*;
 import play.db.jpa.JPA;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.*;
 
 import models.*;
@@ -25,6 +27,8 @@ public class Application extends Controller {
     public static void index() {render();}
 
     public static void indexRegister() {render();}
+
+    public static void indexSendMessage() {renderTemplate("Application/sendMessage.html");}
 
     public static void indexDeleteAccount() {renderTemplate("Application/deleteAccount.html");}
 
@@ -111,14 +115,19 @@ public class Application extends Controller {
         }
     }
 
-    public static void send (Message message, User sender, User receiver, String inbox, Date date, Boolean forward) {
-        User user1 = User.find("byFullName", sender.fullName).first();
-        User user2 = User.find("byFullName", receiver.fullName).first();
+    public static void send (String subject, String message, String receivermail) {
+        Message mess = new Message(subject,message);
+        mess.save();
+        User user1 = User.find("byMail", connectedUser).first();
+        User user2 = User.find("byMail", receivermail).first();
         if (user1 != null && user2 != null) {
-            new Message_User( message,  sender,  receiver,  inbox,  date,  forward).save();
+            Date hoy = new Date();
+            new Message_User( mess,  user1,  user2,  "main", hoy,  false).save();
+            renderTemplate("Application/inbox.html");
         }
         else {
-            renderText("This user does not exist");
+            renderTemplate("Application/sendMessageRetry.html");
+            mess.delete();
         }
     }
 

@@ -5,21 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/Application/deleteAccount.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/Application/deleteAccountRetry.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_deleteAccount.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_deleteAccountRetry.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/Application/sendMessage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/Application/sendMessageRetry.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/Application/inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/inbox.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_inbox.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_errors_500.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_errors_500.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_play__framework_templates_tags_500.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_play__framework_templates_tags_500.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.User" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/classes/production/ProjectePES/views/Application/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/production/ProjectePES/views/Application/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +46,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PESandroid-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/Application" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -61,6 +54,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gerar\OneDrive\Universitat\4A\PES\play-1.5.3\ProjectPES\app\views\Application" />
       <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\Application\messages" />
       <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\errors" />
       <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\Application" />
