@@ -26,6 +26,8 @@ public class Application extends Controller {
 
     public static void indexRegister() {render();}
 
+    public static void indexDeleteAccount() {renderTemplate("Application/deleteAccount.html");}
+
     public static void login(String mail, String password) {
         //localhost:9000/Application/login?mail=s@gmail.com&password=123
         User user = User.find("byMailAndPassword", mail, password).first();
@@ -53,23 +55,40 @@ public class Application extends Controller {
         }
     }
 
-    public static void deleteAccount(String name, String password) {
-        User user = User.find("byFullName", name).first();
-        if (user != null) {
+    public static void deleteAccount(String mail, String password) {
+        User user = User.find("byMail", mail).first();
+            if (user != null) {
 
-            if (password.equals(user.password)) {
-                user.delete();
-                renderText(name + " has been deleted.");
-            }
-            else {
-                renderText("Wrong password.");
-            }
+                if (password.equals(user.password)) {
+                    if(user.sendersList != null){
+                        Message_User mu;
+                        for(int i = 0; i<user.sendersList.size(); i++) {
+                            mu = user.sendersList.get(i);
+                            mu.sender = null;
+                            mu.save();
+                        }
+                    }
 
-        } else {
-            renderText("This user does not exist.");
+                    if(user.receiversList != null){
+                        Message_User mu;
+                        for(int i = 0; i<user.receiversList.size(); i++) {
+                            mu = user.receiversList.get(i);
+                            mu.receiver = null;
+                            mu.save();
+                        }
+                    }
+                    user.delete();
+                    renderTemplate("Application/index.html");
+                } else {
+                    //Reintentamos entrar los datos
+                    renderTemplate("Application/deleteAccountRetry.html");
+                }
+            } else {
+                //Reintentamos entrar los datos
+                renderTemplate("Application/deleteAccountRetry.html");
+            }
         }
-    }
-
+        
     public static void updatePassword(String name, String newPassword, String password) {
         User user = User.find("byFullName", name).first();
         if (user != null) {
