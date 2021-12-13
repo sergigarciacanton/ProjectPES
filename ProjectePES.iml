@@ -16,17 +16,16 @@
         <orderEntry type="module-library">
             <library name="Project Libraries">
                 <CLASSES>
-                    <root url="file://$MODULE_DIR$/lib" />
-                    <root url="file://$MODULE_DIR$/../modules/docviewer/lib"/>
+                                        <root url="file://$MODULE_DIR$/../../../../../../../../Program Files (x86)/play-1.5.3/play-1.5.3/modules/docviewer/lib"/>
 
                 </CLASSES>
                 <JAVADOC />
                 <SOURCES>
-                                        <root url="file://$MODULE_DIR$/../modules/docviewer/src"/>
+                                        <root url="file://$MODULE_DIR$/../../../../../../../../Program Files (x86)/play-1.5.3/play-1.5.3/modules/docviewer/src"/>
 
                 </SOURCES>
                 <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" />
-                                <jarDirectory url="file://$MODULE_DIR$/../modules/docviewer/lib" recursive="false"/>
+                                <jarDirectory url="file://$MODULE_DIR$/../../../../../../../../Program Files (x86)/play-1.5.3/play-1.5.3/modules/docviewer/lib" recursive="false"/>
 
             </library>
         </orderEntry>

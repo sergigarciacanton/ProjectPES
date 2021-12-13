@@ -16,6 +16,7 @@ public class Message extends Model {
 
     @Expose
     public String title;
+
     @Expose
     public String body;
 

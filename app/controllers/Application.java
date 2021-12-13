@@ -1,19 +1,11 @@
 package controllers;
 
-import play.*;
 import play.mvc.*;
 import play.db.jpa.JPA;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.util.*;
-
 import models.*;
-
 import javax.persistence.Query;
-
 import com.google.gson.Gson;
-
 
 public class Application extends Controller {
 
@@ -62,7 +54,6 @@ public class Application extends Controller {
     public static void deleteAccount(String mail, String password) {
         User user = User.find("byMail", mail).first();
             if (user != null) {
-
                 if (password.equals(user.password)) {
                     if(user.sendersList != null){
                         Message_User mu;
@@ -72,7 +63,6 @@ public class Application extends Controller {
                             mu.save();
                         }
                     }
-
                     if(user.receiversList != null){
                         Message_User mu;
                         for(int i = 0; i<user.receiversList.size(); i++) {
@@ -84,11 +74,11 @@ public class Application extends Controller {
                     user.delete();
                     renderTemplate("Application/index.html");
                 } else {
-                    //Reintentamos entrar los datos
+                    //There is an error. Try again
                     renderTemplate("Application/deleteAccountRetry.html");
                 }
             } else {
-                //Reintentamos entrar los datos
+                //There is an error. Try again
                 renderTemplate("Application/deleteAccountRetry.html");
             }
         }
@@ -115,11 +105,11 @@ public class Application extends Controller {
         }
     }
 
-    public static void send (String subject, String message, String receivermail) {
+    public static void send (String subject, String message, String receiverMail) {
         Message mess = new Message(subject,message);
         mess.save();
         User user1 = User.find("byMail", connectedUser).first();
-        User user2 = User.find("byMail", receivermail).first();
+        User user2 = User.find("byMail", receiverMail).first();
         if (user1 != null && user2 != null) {
             Date hoy = new Date();
             new Message_User( mess,  user1,  user2,  "main", hoy,  false).save();

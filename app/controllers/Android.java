@@ -1,7 +1,13 @@
 package controllers;
 
+import com.google.gson.Gson;
+import models.Message;
 import models.User;
+import play.db.jpa.JPA;
 import play.mvc.*;
+
+import javax.persistence.Query;
+import java.util.List;
 
 public class Android extends Controller {
 
@@ -36,6 +42,21 @@ public class Android extends Controller {
         else {
             new User(mail, password, fullName).save();
             renderText("0");
+        }
+    }
+
+    public static void getInbox(String mail, String inboxCode) {
+        //localhost:9000/Android/getInbox?mail=j@gmail.com&inboxCode=main
+        Query query = JPA.em().createQuery("SELECT m.message FROM Message_User m WHERE m.receiver.mail " +
+                        "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                .setParameter("receiverMail", mail)
+                .setParameter("inboxCode", inboxCode);
+        List<Message> messages = query.getResultList();
+        if(messages.size() == 0) renderText("-1");
+        else {
+            Gson g = new Gson();
+            g = g.newBuilder().excludeFieldsWithoutExposeAnnotation().create();
+            renderJSON(g.toJson(messages));
         }
     }
 }
