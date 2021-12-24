@@ -16,7 +16,7 @@ public class Message_User extends Model {
     @ManyToOne
     public User receiver;
 
-    public String inbox; //Cases: main, spam, deleted
+    public String inbox; //Cases: main, spam, sent
     public Date date;
     public Boolean forward;
 
