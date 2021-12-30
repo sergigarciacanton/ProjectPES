@@ -2,11 +2,12 @@ package controllers;
 
 import com.google.gson.Gson;
 import models.Message;
+import models.Message_User;
 import models.User;
 import play.db.jpa.JPA;
 import play.mvc.*;
-
 import javax.persistence.Query;
+import java.util.Date;
 import java.util.List;
 
 public class Android extends Controller {
@@ -96,6 +97,28 @@ public class Android extends Controller {
                 g = g.newBuilder().excludeFieldsWithoutExposeAnnotation().create();
                 renderJSON(g.toJson(messages));
             }
+        }
+    }
+
+    //Query for sending a message to other users
+    public static void send (String subject, String message, String receiverMail, String senderMail) {
+
+        //Queries for getting sender and receiver users given their mails
+        User user1 = User.find("byMail", senderMail).first();
+        User user2 = User.find("byMail", receiverMail).first();
+
+        //In case users are found, get current date and send message
+        if (user1 != null && user2 != null) {
+            //Save the message on database
+            Message mess = new Message(subject,message);
+            mess.save();
+            Date hoy = new Date();
+            new Message_User( mess,  user1,  user2,  "main", hoy,  false).save();
+            renderText("0");
+        }
+        //In rest of cases, there is an error. Render message
+        else {
+            renderText("-1");
         }
     }
 }
