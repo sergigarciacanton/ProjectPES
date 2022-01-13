@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+            input[type=submit] {
+              width: 50%;
+              text-align: center;
+              background-color: #4CAF50;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+              background-color: #45a049;
+            }
+
+            div {
+              border-radius: 5px;
+              text-align: center;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
+            #myTable {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+
+            #myTable td, #myTable th {
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
+
+            #myTable tr:nth-child(even){background-color: #f2f2f2;}
+
+            #myTable tr:hover {background-color: #ddd;}
+
+            #myTable th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #4CAF50;
+              color: white;
+            }
+        </style>
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css%22%3E" >
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css%22%3E" >
+    <style>
+        html,body,h1,h2,h3,h4,h5 {font-family: "RobotoDraft", "Roboto", sans-serif;}
+        .w3-bar-block .w3-bar-item{padding:16px}
+    </style>-->
+</head>
+<body>
+<div class="container-fluid mt-3" id="inbox">
+    <h1 style="text-align:center">Inbox</h1>
+    <label>Hello!</label>
+
+    #{form @getInbox()}
+    <p class="field" name="inbox">
+        <strong>Choose inbox:</strong>
+        #{select 'inbox', value:inbox}
+        #{option 1}Main#{/option}
+        #{option 2}Spam#{/option}
+        #{option 3}Sent#{/option}
+        #{/select}
+    </p>
+    <p class="buttons">
+        <input style="text-align:center" type="submit" value="Get inbox" />
+    </p>
+    #{/form}
+
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for address.." title="Type in a name">
+
+    <table id="myTable">
+        <tr class="header">
+            <th style="width:10%;">Title</th>
+            <th style="width:60%;">Body</th>
+            <th style="width:10%;">Address</th>
+            <th style="width:20%;">Date</th>
+        </tr>
+        #{list items:mail, as:'m'}
+        <tr>
+            <td>${m.title} </td>
+            <td>${m.body} </td>
+            <td>${m.mail} </td>
+            <td>${m.date} </td>
+            <!--<td><a href="@{index()}">Read message</a></td> LINK READ MESSAGE GERARD-->
+        </tr>
+        #{/list}
+    </table>
+
+    <script>
+    function myFunction() {
+      var input, filter, table, tr, td, i, txtValue;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2];
+        if (td) {
+          txtValue = td.textContent || td.innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+    </script>
+
+    <form action="http://localhost:9000/Application/index">
+        <input type="submit" value="Log out" />
+    </form>
+    <form action="http://localhost:9000/Application/indexDeleteAccount">
+        <input type="submit" value="Delete Account" />
+    </form>
+
+    <form action="http://localhost:9000/Application/indexSendMessage">
+        <input type="submit" value="Send Message" />
+    </form>
+
+
+</div>
+</body>
+</html>

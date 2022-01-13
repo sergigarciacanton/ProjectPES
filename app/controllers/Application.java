@@ -178,21 +178,63 @@ public class Application extends Controller {
     }
 
     //Query for getting a user's inbox
-    public static void getInbox(String mail, String inboxCode) {
-        //localhost:9000/Application/getInbox?mail=j@gmail.com&inboxCode=main
-
+    public static void getInbox(String inbox) {
+        //localhost:9000/Application/getInbox?inbox=1
+        if(inbox.equals("1")) inbox = "main";
+        else if(inbox.equals("2")) inbox = "spam";
+        else inbox = "sent";
         //Query asks for messages with the given inbox code for the given receiver
-        //AÑADIR QUERY PARA BANDEJA ENVIADOS Y COMPLETAR QUERY CON MAIL Y FECHA
-        Query query = JPA.em().createQuery("SELECT m.message FROM Message_User m WHERE m.receiver.mail " +
+        List<String> title;
+        List<String> body;
+        List<String> sender;
+        List<Date> date;
+        if(!inbox.equals("sent")) {
+            Query query4 = JPA.em().createQuery("SELECT m.message.body FROM Message_User m WHERE m.receiver.mail " +
                         "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
-                .setParameter("receiverMail", mail)
-                .setParameter("inboxCode", inboxCode);
-        List<Message> messages = query.getResultList();
+                .setParameter("receiverMail", connectedUser)
+                .setParameter("inboxCode", inbox);
+            body = query4.getResultList();
+            Query query = JPA.em().createQuery("SELECT m.message.title FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", connectedUser)
+                    .setParameter("inboxCode", inbox);
+            title = query.getResultList();
+            Query query2 = JPA.em().createQuery("SELECT m.sender.mail FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", connectedUser)
+                    .setParameter("inboxCode", inbox);
+            sender = query2.getResultList();
+            Query query3 = JPA.em().createQuery("SELECT m.date FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", connectedUser)
+                    .setParameter("inboxCode", inbox);
+            date = query3.getResultList();
+        }
+        else {
+            Query query4 = JPA.em().createQuery("SELECT m.message.body FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", connectedUser);
+            body = query4.getResultList();
+            Query query = JPA.em().createQuery("SELECT m.message.title FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", connectedUser);
+            title = query.getResultList();
+            Query query2 = JPA.em().createQuery("SELECT m.receiver.mail FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", connectedUser);
+            sender = query2.getResultList();
+            Query query3 = JPA.em().createQuery("SELECT m.date FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", connectedUser);
+            date = query3.getResultList();
+        }
 
-        //Cast results to JSON
-        Gson g = new Gson();
-        g = g.newBuilder().excludeFieldsWithoutExposeAnnotation().create();
-        renderJSON(  g.toJson(messages));
-        //AÑADIR RESUPESTA ERROR SI NO HAY MENSAJES
+        List<Mail> mail = new ArrayList<>();
+        if(title.size() > 0 && body.size() > 0 && sender.size() > 0 && date.size() > 0)
+            for(int j = 0; j < title.size(); j++) {
+                mail.add(new Mail(title.get(j), body.get(j), sender.get(j), date.get(j).toString()));
+                System.out.println(mail.get(j).toString());
+            }
+        render(mail);
     }
 }

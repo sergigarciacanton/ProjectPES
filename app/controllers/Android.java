@@ -105,20 +105,25 @@ public class Android extends Controller {
 
         //Queries for getting sender and receiver users given their mails
         User user1 = User.find("byMail", senderMail).first();
-        User user2 = User.find("byMail", receiverMail).first();
+        String[] receiverSplit = receiverMail.split(" ");
+        Message mess = new Message(subject, message);
 
-        //In case users are found, get current date and send message
-        if (user1 != null && user2 != null) {
-            //Save the message on database
-            Message mess = new Message(subject,message);
-            mess.save();
-            Date hoy = new Date();
-            new Message_User( mess,  user1,  user2,  "main", hoy,  false).save();
-            renderText("0");
+        int error = 0;
+        for (String s : receiverSplit) {
+            User user2 = User.find("byMail", s).first();
+
+            //In case users are found, get current date and send message
+            if (user1 != null && user2 != null && error == 0) {
+                //Save the message on database
+                mess.save();
+                Date hoy = new Date();
+                new Message_User(mess, user1, user2, "main", hoy, false).save();
+            }
+            //In rest of cases, there is an error. Render message
+            else {
+                error = -1;
+            }
         }
-        //In rest of cases, there is an error. Render message
-        else {
-            renderText("-1");
-        }
+        renderText(error);
     }
 }

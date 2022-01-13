@@ -34,13 +34,24 @@
         <div class="container-fluid mt-3" id="inbox">
             <h1 style="text-align:center">Inbox</h1>
             <label>Hello!</label>
+
+            #{form @getInbox()}
+            <p class="field" name="inbox">
+                <strong>Choose inbox:</strong>
+                #{select 'inbox', value:inbox}
+                #{option 1}Main#{/option}
+                #{option 2}Spam#{/option}
+                #{option 3}Sent#{/option}
+                #{/select}
+            </p>
+            <p class="buttons">
+                <input type="submit" value="Get inbox" />
+            </p>
+            #{/form}
+
             <form action="http://localhost:9000/Application/index">
                 <input type="submit" value="Log out" />
             </form>
-
-
-
-
             <form action="http://localhost:9000/Application/indexDeleteAccount">
                 <input type="submit" value="Delete Account" />
             </form>
