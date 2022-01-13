@@ -5,7 +5,6 @@ import play.db.jpa.JPA;
 import java.util.*;
 import models.*;
 import javax.persistence.Query;
-import com.google.gson.Gson;
 
 public class Application extends Controller {
 
@@ -233,7 +232,6 @@ public class Application extends Controller {
         if(title.size() > 0 && body.size() > 0 && sender.size() > 0 && date.size() > 0)
             for(int j = 0; j < title.size(); j++) {
                 mail.add(new Mail(title.get(j), body.get(j), sender.get(j), date.get(j).toString()));
-                System.out.println(mail.get(j).toString());
             }
         render(mail);
     }

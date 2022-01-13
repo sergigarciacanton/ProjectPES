@@ -1,7 +1,6 @@
 import models.*;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
-
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,7 +24,7 @@ public class Bootstrap extends Job {
             new Message_User(m1, u1, u2, "main", new Date(2021 - 1900, Calendar.OCTOBER, 23, 13, 34, 0), false).save();
             new Message_User(m1, u1, u2, "spam", new Date(2021 - 1900, Calendar.OCTOBER, 23, 16, 34, 3), false).save();
             new Message_User(m2, u2, u3, "main", new Date(2021 - 1900, Calendar.OCTOBER, 23, 20, 57, 0), false).save();
-            new Message_User(m3, u1, u2, "main", new Date(2021 - 1900, Calendar.OCTOBER, 23, 13, 34, 0), false).save();
+            new Message_User(m3, u1, u2, "main", new Date(2021 - 1900, Calendar.OCTOBER, 13, 13, 34, 0), false).save();
         }
     }
 }
