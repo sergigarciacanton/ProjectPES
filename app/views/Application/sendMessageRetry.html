@@ -1,59 +1,109 @@
-#{extends 'main.html' /}
-#{set title:'Home' /}
+<!DOCTYPE html>
+<html lang="en">
+    #{extends 'main.html' /}
+    #{set title:'EETAC Mail' /}
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            input[type=submit] {
+              width: 15%;
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 18px;
+            }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            input[type=submit]:hover {
+              opacity: 0.8;
+            }
 
-<style>
-    input[type=submit] {
-      width: 100%;
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+            div {
+              border-radius: 5px;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
 
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-
-    div {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-</style>
-
-<h1 style="text-align:center">Send Message</h1>
-
-<div>
-
-    #{form @send(), id:'formSendMessage'}
-    <p style="background-color:tomato;">This e-mail doesn't exist.</p>
-
-    <p class="field">
-        <label>Subject:</label>
-        <input type="text" name="subject" size="19"  />
-    </p>
-    <p class="field">
-        <label>Send to:</label>
-        <input type="text" name="receivermail" size="19"/>
-    </p>
-
-    <p class="field">
-        <label>Message:</label>
-        <br></br>
-        <textarea name="message" rows="20" cols="100"></textarea>
-    </p>
-    <p class="buttons">
-        <input type="submit" value="Send" /> <a href="@{getInbox(1)}">Cancel</a>
-    </p>
-    #{/form}
-
-</div>
-
-<script type="text/javascript" charset="${_response_encoding}">
-    sessvars.$.clearMem()
-</script>
+            #topnav {
+              position: fixed;
+              top: 0px;
+              right: 0px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              color: white;
+              background-color: hsl(210, 11%, 15%);
+            }
+            #topnav #header{
+              margin: 10px 0px 10px 30px;
+            }
+            #topnav ul {
+              display: flex;
+            }
+            #topnav ul li {
+              list-style: none;
+            }
+            #topnav ul li a {
+              text-decoration: none;
+              font-size: 18px;
+              color: white;
+              margin: 10px 10px 40px 10px;
+              padding-right: 1rem;
+              padding-left: .5rem;
+            }
+            #topnav ul li a[href="#home"] {
+              color: white;
+            }
+            #topnav ul li a:hover {
+              color: rgba(255,255,255,.75);
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="topnav">
+            <h3 id="header">Send Message</h3>
+            <ul>
+                <li>
+                    <a href="@{index()}">Log out</a>
+                </li>
+                <li>
+                    <a href="@{indexUpdateAccount()}">Update account</a>
+                </li>
+                <li>
+                    <a href="@{indexDeleteAccount()}">Delete account</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <br>
+            <br>
+            #{form @send(), id:'formSendMessage'}
+            <p style="background-color:tomato;">This e-mail doesn't exist.</p>
+            <p class="field">
+                <label>Subject:</label>
+                <input type="text" name="subject" size="19"  />
+            </p>
+            <p class="field">
+                <label>Send to:</label>
+                <input type="text" name="receivermail" size="19"/>
+            </p>
+            <p class="field">
+                <label>Message:</label>
+                <br></br>
+                <textarea name="message" rows="20" cols="100"></textarea>
+            </p>
+            <p class="buttons">
+                <input type="submit" value="Send" />
+            </p>
+            <a href="@{getInbox(1)}">Cancel</a>
+            #{/form}
+        </div>
+        <script type="text/javascript" charset="${_response_encoding}">
+            sessvars.$.clearMem()
+        </script>
+    </body>
+</html>

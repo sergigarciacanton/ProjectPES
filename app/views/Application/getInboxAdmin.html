@@ -1,59 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
     #{extends 'main.html' /}
-    #{set title:'Home' /}
+    #{set title:'EETAC Mail' /}
     <head>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
-                input[type=submit] {
-                  width: 50%;
-                  text-align: center;
-                  background-color: #4CAF50;
-                  color: white;
-                  padding: 14px 20px;
-                  margin: 8px 0;
-                  border: none;
-                  border-radius: 4px;
-                  cursor: pointer;
-                }
+            input[type=submit] {
+              width: 15%;
+              text-align: center;
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 18px;
+            }
 
-                input[type=submit]:hover {
-                  background-color: #45a049;
-                }
+            input[type=submit]:hover {
+              opacity: 0.8;
+            }
 
-                div {
-                  border-radius: 5px;
-                  text-align: center;
-                  background-color: #f2f2f2;
-                  padding: 20px;
-                }
-                #myTable {
-                  font-family: Arial, Helvetica, sans-serif;
-                  border-collapse: collapse;
-                  width: 100%;
-                }
+            div {
+              border-radius: 5px;
+              text-align: center;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
+            #myTable {
+              font-family: Arial, Helvetica, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
 
-                #myTable td, #myTable th {
-                  border: 1px solid #ddd;
-                  padding: 8px;
-                }
+            #myTable td, #myTable th {
+              border: 1px solid #ddd;
+              padding: 8px;
+            }
 
-                #myTable tr:nth-child(even){background-color: #f2f2f2;}
+            #myTable tr:nth-child(even){background-color: #f2f2f2;}
 
-                #myTable tr:hover {background-color: #ddd;}
+            #myTable tr:hover {background-color: #ddd;}
 
-                #myTable th {
-                  padding-top: 12px;
-                  padding-bottom: 12px;
-                  text-align: left;
-                  background-color: #4CAF50;
-                  color: white;
-                }
+            #myTable th {
+              padding-top: 12px;
+              padding-bottom: 12px;
+              text-align: left;
+              background-color: #04AA6D;
+              color: white;
+            }
+
+            #topnav {
+              position: fixed;
+              top: 0px;
+              right: 0px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              color: white;
+              background-color: hsl(210, 11%, 15%);
+            }
+            #topnav #header{
+              margin: 10px 0px 10px 30px;
+            }
+            #topnav ul {
+              display: flex;
+            }
+            #topnav ul li {
+              list-style: none;
+            }
+            #topnav ul li a {
+              text-decoration: none;
+              font-size: 18px;
+              color: white;
+              margin: 10px 10px 40px 10px;
+              padding-right: 1rem;
+              padding-left: .5rem;
+            }
+            #topnav ul li a[href="#home"] {
+              color: white;
+            }
+            #topnav ul li a:hover {
+              color: rgba(255,255,255,.75);
+            }
         </style>
     </head>
     <body>
+        <nav id="topnav">
+            <h3 id="header">Inbox</h3>
+            <ul>
+                <li>
+                    <a href="@{index()}">Log out</a>
+                </li>
+            </ul>
+        </nav>
         <div class="container-fluid mt-3" id="inbox">
-            <h1 style="text-align:center">Inbox</h1>
+            <br>
+            <br>
             <label>Hello Admin!</label>
 
             #{form @getInboxAdmin()}

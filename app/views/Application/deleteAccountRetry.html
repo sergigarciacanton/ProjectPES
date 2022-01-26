@@ -1,50 +1,108 @@
-#{extends 'main.html' /}
-#{set title:'deleteAccount' /}
+<!DOCTYPE html>
+<html lang="en">
+    #{extends 'main.html' /}
+    #{set title:'EETAC Mail' /}
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            input[type=submit] {
+              width: 15%;
+              background-color: #04AA6D;
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              font-size: 18px;
+            }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+            input[type=submit]:hover {
+              opacity: 0.8;
+            }
 
-<style>
-    input[type=submit] {
-      width: 100%;
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+            div {
+              border-radius: 5px;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
 
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
+            #topnav {
+              position: fixed;
+              top: 0px;
+              right: 0px;
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              color: white;
+              background-color: hsl(210, 11%, 15%);
+            }
+            #topnav #header{
+              margin: 10px 0px 10px 30px;
+            }
+            #topnav ul {
+              display: flex;
+            }
+            #topnav ul li {
+              list-style: none;
+            }
+            #topnav ul li a {
+              text-decoration: none;
+              font-size: 18px;
+              color: white;
+              margin: 10px 10px 40px 10px;
+              padding-right: 1rem;
+              padding-left: .5rem;
+            }
+            #topnav ul li a[href="#home"] {
+              color: white;
+            }
+            #topnav ul li a:hover {
+              color: rgba(255,255,255,.75);
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="topnav">
+            <h3 id="header">Delete Account</h3>
+            <ul>
+                <li>
+                    <a href="@{index()}">Log out</a>
+                </li>
+                <li>
+                    <a href="@{indexSendMessage()}">New message</a>
+                </li>
+                <li>
+                    <a href="@{indexUpdateAccount()}">Update account</a>
+                </li>
+            </ul>
+        </nav>
+        <div>
+            <br>
+            <br>
+            <p style="background-color:tomato;">Make sure the data is introduced correctly.</p>
 
-    div {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-      padding: 20px;
-    }
-</style>
+            #{form @deleteAccount()}
+            #{field 'user.mail'}
+            <p class="${field.errorClass}">
+                <strong>Username:</strong> <input type="text" name="mail" size="16" value="${user?.username}"> *
+                <span class="error">${field.error}</span>
+            </p>
+            #{/field}
 
-<h1 style="text-align:center">Delete Account</h1>
-<p style="background-color:tomato;">Make sure the data is introduced correctly.</p>
+            #{field 'user.password'}
+            <p class="${field.errorClass}">
+                <strong>Password:</strong> <input type="password" name="password" size="16" value="${user?.password}"> *
+                <span class="error">${field.error}</span>
+            </p>
+            #{/field}
 
-#{form @deleteAccount()}
-    #{field 'user.mail'}
-    <p class="${field.errorClass}">
-        <strong>Username:</strong> <input type="text" name="mail" size="16" value="${user?.username}"> *
-        <span class="error">${field.error}</span>
-    </p>
-    #{/field}
-
-    #{field 'user.password'}
-    <p class="${field.errorClass}">
-        <strong>Password:</strong> <input type="password" name="password" size="16" value="${user?.password}"> *
-        <span class="error">${field.error}</span>
-    </p>
-    #{/field}
-
-    <p class="buttons">
-        <input type="submit" value="Delete"> <a href="@{getInbox(1)}">Cancel</a>
-    </p>
-#{/form}
+            <p class="buttons">
+                <input type="submit" value="Delete">
+            </p>
+            <a href="@{getInbox(1)}">Cancel</a>
+            #{/form}
+        </div>
+    </body>
+</html>

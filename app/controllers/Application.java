@@ -54,7 +54,8 @@ public class Application extends Controller {
             connectedUser = mail;
             session.put("user", mail);
             if (!user.admin) {
-                renderTemplate("Application/inbox.html");
+                getInbox("1");
+                //renderTemplate("Application/inbox.html");
             }
             else{
                 renderTemplate("Application/inboxAdmin.html");
@@ -134,7 +135,8 @@ public class Application extends Controller {
                 user.password = newPassword;
                 user.fullName = newName;
                 user.save();
-                renderTemplate("Application/inbox.html");
+                getInbox("1");
+                // renderTemplate("Application/inbox.html");
             }
             else
                 renderTemplate("Application/updateAccountRetry.html");
@@ -157,7 +159,8 @@ public class Application extends Controller {
         if (user1 != null && user2 != null) {
             Date hoy = new Date();
             new Message_User( mess,  user1,  user2,  "main", hoy,  false).save();
-            renderTemplate("Application/inbox.html");
+            getInbox("1");
+            //renderTemplate("Application/inbox.html");
         }
         //In rest of cases, there is an error. Render message
         else {
@@ -226,6 +229,7 @@ public class Application extends Controller {
         render(mail);
     }
 
+    //Query for getting a specific inbox being admin
     public static void getInboxAdmin(String mail2, String inbox) {
         if(inbox.equals("1")) inbox = "main";
         else if(inbox.equals("2")) inbox = "spam";
@@ -284,9 +288,8 @@ public class Application extends Controller {
         render(mail);
     }
 
-
-    public static void changeInbox (String title2, String inbox)
-    {
+    //Query for changing a message to another inbox
+    public static void changeInbox (String title2, String inbox) {
         User u = User.find("byMail", connectedUser).first();
 
         if(inbox.equals("1")) inbox = "main";
@@ -301,12 +304,14 @@ public class Application extends Controller {
             if (Objects.equals(mu.get(i).message.body, title2)){
                 mu.get(i).inbox = inbox;
                 mu.get(i).save();
-
-                renderTemplate("Application/inbox.html");
+                getInbox("1");
+                //renderTemplate("Application/inbox.html");
             }
             i++;
         }
     }
+
+    //Query for showing a message's details
     public static void viewMessage(String title, String body, String mail, String date) {
         Mail m = new Mail(title, body, mail, date);
         render(m);
