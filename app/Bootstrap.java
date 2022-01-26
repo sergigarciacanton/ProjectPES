@@ -14,6 +14,9 @@ public class Bootstrap extends Job {
             User u1 = new User("s@gmail.com", "123", "Sergi").save();
             User u2 = new User("j@gmail.com", "123", "Joan").save();
             User u3 = new User("g@gmail.com", "123", "Gerard").save();
+            User u4 = new User("admin@gmail.com", "123", "Admin");
+            u4.admin = true;
+            u4.save();
 
             //Load three messages
             Message m1 = new Message("Hello default", "Hello").save();

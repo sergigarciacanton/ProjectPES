@@ -53,7 +53,12 @@ public class Application extends Controller {
         else {
             connectedUser = mail;
             session.put("user", mail);
-            renderTemplate("Application/inbox.html");
+            if (!user.admin) {
+                renderTemplate("Application/inbox.html");
+            }
+            else{
+                renderTemplate("Application/inboxAdmin.html");
+            }
         }
     }
 
@@ -221,6 +226,65 @@ public class Application extends Controller {
         render(mail);
     }
 
+    public static void getInboxAdmin(String mail2, String inbox) {
+        if(inbox.equals("1")) inbox = "main";
+        else if(inbox.equals("2")) inbox = "spam";
+        else inbox = "sent";
+        //Query asks for messages with the given inbox code for the given receiver
+        List<String> title;
+        List<String> body;
+        List<String> sender;
+        List<Date> date;
+        if(!inbox.equals("sent")) {
+            Query query4 = JPA.em().createQuery("SELECT m.message.body FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", mail2)
+                    .setParameter("inboxCode", inbox);
+            body = query4.getResultList();
+            Query query = JPA.em().createQuery("SELECT m.message.title FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", mail2)
+                    .setParameter("inboxCode", inbox);
+            title = query.getResultList();
+            Query query2 = JPA.em().createQuery("SELECT m.sender.mail FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", mail2)
+                    .setParameter("inboxCode", inbox);
+            sender = query2.getResultList();
+            Query query3 = JPA.em().createQuery("SELECT m.date FROM Message_User m WHERE m.receiver.mail " +
+                            "LIKE :receiverMail AND m.inbox LIKE :inboxCode")
+                    .setParameter("receiverMail", mail2)
+                    .setParameter("inboxCode", inbox);
+            date = query3.getResultList();
+        }
+        else {
+            Query query4 = JPA.em().createQuery("SELECT m.message.body FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", mail2);
+            body = query4.getResultList();
+            Query query = JPA.em().createQuery("SELECT m.message.title FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", mail2);
+            title = query.getResultList();
+            Query query2 = JPA.em().createQuery("SELECT m.receiver.mail FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", mail2);
+            sender = query2.getResultList();
+            Query query3 = JPA.em().createQuery("SELECT m.date FROM Message_User m WHERE m.sender.mail " +
+                            "LIKE :receiverMail")
+                    .setParameter("receiverMail", mail2);
+            date = query3.getResultList();
+        }
+
+        List<Mail> mail = new ArrayList<>();
+        if(title.size() > 0 && body.size() > 0 && sender.size() > 0 && date.size() > 0)
+            for(int j = 0; j < title.size(); j++) {
+                mail.add(new Mail(title.get(j), body.get(j), sender.get(j), date.get(j).toString()));
+            }
+        render(mail);
+    }
+
+
     public static void changeInbox (String title2, String inbox)
     {
         User u = User.find("byMail", connectedUser).first();
@@ -228,7 +292,7 @@ public class Application extends Controller {
         if(inbox.equals("1")) inbox = "main";
         else if(inbox.equals("2")) inbox = "spam";
         else inbox = "sent";
-        
+
         List<Message_User> mu = Message_User.find("byReceiver", u).fetch();
 
         int i = 0;

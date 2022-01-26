@@ -16,11 +16,13 @@ public class User extends Model {
     public String mail;
     public String password;
     public String fullName;
+    public Boolean admin;
 
     public User(String mail, String password, String fullName) {
         this.mail = mail;
         this.password = password;
         this.fullName = fullName;
+        this.admin = false;
     }
 
 
