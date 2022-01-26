@@ -6,14 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="7052ab78-4915-4cd6-b3a1-d31768a33fc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/ProjectePES.iws" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectePES.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Bootstrap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/Bootstrap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/Android.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Android.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/File.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/File.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/deleteAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/deleteAccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/deleteAccountRetry.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/deleteAccountRetry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/getInbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/getInbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/inbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/sendMessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/sendMessage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/Application/sendMessageRetry.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/Application/sendMessageRetry.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/Bootstrap" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/Bootstrap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_getInbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_getInbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_inbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_inbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_sendMessage.html" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/_app_views_Application_sendMessage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Android" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Android" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/controllers.Application" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.File" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.File" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/bytecode/DEV/models.Message" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/Bootstrap.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/Bootstrap.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tmp/classes/controllers/Android.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Android.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/controllers/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/models/File.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/models/File.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tmp/classes/models/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/classes/models/Message.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,8 +42,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="HTML4 File" />
         <option value="HTML File" />
+        <option value="HTML4 File" />
       </list>
     </option>
   </component>
@@ -52,10 +67,10 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="DefaultHtmlFileTemplate" value="HTML4 File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/Application" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -64,11 +79,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Usuario\Documents\UNI\2021 - 22 Q1\PES\Proyecto\ProjectPES\app\views\Application" />
       <recent name="C:\Users\Usuario\Documents\UNI\2021 - 22 Q1\PES\Proyecto\ProjectPES\app\models" />
       <recent name="C:\Users\gerar\OneDrive\Universitat\4A\PES\play-1.5.3\ProjectPES\app\views\Application" />
       <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\Application\messages" />
       <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\errors" />
-      <recent name="C:\Users\Usuario\Desktop\Nueva carpeta\ProjectPES\app\views\Application" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="views" />

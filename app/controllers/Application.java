@@ -28,6 +28,9 @@ public class Application extends Controller {
     //Renders webpage to delete the account
     public static void indexDeleteAccount() {renderTemplate("Application/deleteAccount.html");}
 
+    //Renders webpage to update the account
+    public static void indexUpdateAccount() {renderTemplate("Application/updateAccount.html");}
+
     //Query for logging in
     public static void login(String mail, String password) {
         //localhost:9000/Application/login?mail=s@gmail.com&password=123
@@ -115,42 +118,24 @@ public class Application extends Controller {
         }
     }
 
-    //Query for updating password
-    public static void updatePassword(String name, String newPassword, String password) {
-        //Query asks for user given its name (CAMBIAR A MAIL)
-        User user = User.find("byFullName", name).first();
+    //Query for updating user's password and name
+    public static void updateAccount(String mail, String newPassword, String password, String newName) {
+        User user = User.find("byMail", mail).first();
 
         //In case there is a user, check if password is well
         if (user != null) {
             //If password is well, change to the new one
             if (password.equals(user.password)) {
                 user.password = newPassword;
-                user.save();
-                //AÑADIR RENDER CON MENSAJE EN HTML
-            }
-            //PONER ELSE Y AÑADIR RENDER EN HTML
-            renderText("Wrong password.");
-        }
-        //AÑADIR ERROR SI NO HAY USUARIO
-    }
-
-    //Query for updating name
-    public static void updateName(String name, String newName, String password) {
-        //Query asks for user given its name (CAMBIAR A MAIL)
-        User user = User.find("byFullName", name).first();
-
-        //In case there is a user, check if password is well
-        if (user != null) {
-            //If password is well, change to the new name
-            if (password.equals(user.password)) {
                 user.fullName = newName;
                 user.save();
-                //AÑADIR RENDER CON MENSAJE EN HTML
+                renderTemplate("Application/inbox.html");
             }
-            //PONER ELSE Y AÑADIR RENDER EN HTML
-            renderText("Wrong password.");
+            else
+                renderTemplate("Application/updateAccountRetry.html");
         }
-        //AÑADIR ERROR SI NO HAY USUARIO
+        else
+            renderTemplate("Application/updateAccountRetry.html");
     }
 
     //Query for sending a message to other users
@@ -234,5 +219,10 @@ public class Application extends Controller {
                 mail.add(new Mail(title.get(j), body.get(j), sender.get(j), date.get(j).toString()));
             }
         render(mail);
+    }
+
+    public static void viewMessage(String title, String body, String mail, String date) {
+        Mail m = new Mail(title, body, mail, date);
+        render(m);
     }
 }

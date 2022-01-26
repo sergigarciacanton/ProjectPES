@@ -11,9 +11,6 @@ public class Message extends Model {
     @OneToMany (mappedBy = "message")
     public List<Message_User> list = new ArrayList<>();
 
-    @OneToMany (mappedBy = "message")
-    public List<File> filesList;
-
     @Expose
     public String title;
 

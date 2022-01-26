@@ -30,22 +30,21 @@
 <p style="background-color:tomato;">Make sure the data is introduced correctly.</p>
 
 #{form @deleteAccount()}
-#{field 'user.mail'}
-<p class="${field.errorClass}">
-    <strong>Username:</strong> <input type="text" name="mail" size="16" value="${user?.username}"> *
-    <span class="error">${field.error}</span>
-</p>
+    #{field 'user.mail'}
+    <p class="${field.errorClass}">
+        <strong>Username:</strong> <input type="text" name="mail" size="16" value="${user?.username}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
 
-#{/field}
-#{field 'user.password'}
-<p class="${field.errorClass}">
-    <strong>Password:</strong> <input type="password" name="password" size="16" value="${user?.password}"> *
-    <span class="error">${field.error}</span>
-</p>
+    #{field 'user.password'}
+    <p class="${field.errorClass}">
+        <strong>Password:</strong> <input type="password" name="password" size="16" value="${user?.password}"> *
+        <span class="error">${field.error}</span>
+    </p>
+    #{/field}
 
-
-#{/field}
-<p class="buttons">
-    <input type="submit" value="Delete"> <a href="@{index()}">Cancel</a>
-</p>
+    <p class="buttons">
+        <input type="submit" value="Delete"> <a href="@{getInbox(1)}">Cancel</a>
+    </p>
 #{/form}
