@@ -221,6 +221,28 @@ public class Application extends Controller {
         render(mail);
     }
 
+    public static void changeInbox (String title2, String inbox)
+    {
+        User u = User.find("byMail", connectedUser).first();
+
+        if(inbox.equals("1")) inbox = "main";
+        else if(inbox.equals("2")) inbox = "spam";
+        else inbox = "sent";
+        
+        List<Message_User> mu = Message_User.find("byReceiver", u).fetch();
+
+        int i = 0;
+        while (i < mu.size() ){
+
+            if (Objects.equals(mu.get(i).message.body, title2)){
+                mu.get(i).inbox = inbox;
+                mu.get(i).save();
+
+                renderTemplate("Application/inbox.html");
+            }
+            i++;
+        }
+    }
     public static void viewMessage(String title, String body, String mail, String date) {
         Mail m = new Mail(title, body, mail, date);
         render(m);

@@ -47,6 +47,22 @@
                 <strong>Body:</strong> <table id="myTable"> <tr> <td>${m.body} </td> </tr> </table>
             </pre>
 
+            #{form @changeInbox()}
+
+            <input id="title2" name="title2" type="hidden" value= ${m.body}>
+            <p class="field" name="inbox">
+                <strong>Choose inbox:</strong>
+                #{select 'inbox', value:inbox}
+                #{option 1}Main#{/option}
+                #{option 2}Spam#{/option}
+                #{option 3}Sent#{/option}
+                #{/select}
+            </p>
+            <p class="buttons">
+                <input type="submit" value="Change inbox" />
+            </p>
+            #{/form}
+
             <p class="buttons">
                 <a href="@{getInbox(1)}">Back to search</a>
             </p>
